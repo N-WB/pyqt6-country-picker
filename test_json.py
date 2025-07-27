@@ -1,9 +1,7 @@
 '''To test the json-parsing. Run pytest to make sure it passes. '''
 
-import data_fetcher
 import requests_mock
 from data_fetcher import CountryFetcher
-import requests
 
 def test_json():
     '''Tests that the name of "Afghanistan" is extracted from a shortened version of the countries json.'''
