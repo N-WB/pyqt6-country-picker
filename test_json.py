@@ -18,6 +18,3 @@ def test_json():
 
         assert country_list is not None, "A list of countries was not attained."
         assert "Afghanistan" in country_list, "the country 'Afghanistan' is missing from the list."
-    
-
-test_json()
