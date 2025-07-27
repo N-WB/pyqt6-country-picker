@@ -40,7 +40,7 @@ class CountryFetcher(QThread):
         while self._country_names is None:
             
             for i in range(attempt_count):
-                self._country_names = self.try_fetch_countries(self._url)
+                self._country_names = self.try_fetch_countries()
                 if self._country_names is not None: break
 
             self.msleep(ms_between_attempt_groups)
@@ -48,10 +48,10 @@ class CountryFetcher(QThread):
         self.quit()
     
 
-    def try_fetch_countries(self, url: str) -> list[str] | None:
+    def try_fetch_countries(self) -> list[str] | None:
         ''' Attempts to GET countries. Returns the list of countries, or None if any error is encountered.'''
         
-        response = requests.get(url)
+        response = requests.get(self._url)
         if response.status_code is not requests.codes.ok:
             print("Error: received network error", response.status_code)
             return None
