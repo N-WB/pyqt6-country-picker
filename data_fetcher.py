@@ -35,14 +35,12 @@ class CountryFetcher(QThread):
 
     def run(self) -> None:
         ms_between_attempt_groups = 1000
-        attempt_count = 5
 
         while self._country_names is None:
             
-            for i in range(attempt_count):
-                self._country_names = self.try_fetch_countries()
-                if self._country_names is not None: break
-
+            self._country_names = self.try_fetch_countries()
+            if self._country_names is not None: break
+            
             self.msleep(ms_between_attempt_groups)
 
         self.quit()
