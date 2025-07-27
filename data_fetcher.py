@@ -69,6 +69,7 @@ class CountryFetcher(QThread):
         if is_valid:
             def extract_name(country): return country["name"]
             country_names = [extract_name(c) for c in jsonAsPythonObject]
+            country_names.sort()
             return country_names
         else:
             print("Error: the received json does not conform to the expected countries format.")
