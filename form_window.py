@@ -1,6 +1,10 @@
 from PyQt6 import QtWidgets
 import typing
+import compose
 from typing import Any
+
+def format_country_name(country_name: str) -> str:
+    return "Selected: " + country_name
 
 class AppWindow(QtWidgets.QMainWindow):
     """An application window containing a label and combobox"""
@@ -28,8 +32,9 @@ class AppWindow(QtWidgets.QMainWindow):
         self.country_picker = QtWidgets.QComboBox()
         new_layout.addWidget(self.country_picker)
 
-        self.country_picker.currentTextChanged.connect(self.selected_country_label.setText)
-
+        slot = compose.compose(self.selected_country_label.setText, format_country_name)
+        self.country_picker.currentTextChanged.connect(slot)
+        
         self.show()
 
     def update_country_list(self, new_country_list: list[str]) -> None:
