@@ -18,7 +18,6 @@ def try_fetch_countries(url: str) -> list[str] | None:
 
                 def extract_name(country): return country["name"]
                 country_names = [extract_name(c) for c in jsonAsPythonObject]
-                print(country_names)
 
                 return country_names
             

@@ -22,11 +22,13 @@ class AppWindow(QtWidgets.QMainWindow):
         self.central_widget.setLayout(new_layout)
 
 
-        selected_country_label = QtWidgets.QLabel()
-        new_layout.addWidget(selected_country_label)
+        self.selected_country_label = QtWidgets.QLabel()
+        new_layout.addWidget(self.selected_country_label)
         
         self.country_picker = QtWidgets.QComboBox()
         new_layout.addWidget(self.country_picker)
+
+        self.country_picker.currentTextChanged.connect(self.selected_country_label.setText)
 
         self.show()
 
