@@ -1,8 +1,7 @@
 '''To test the json-parsing. Run pytest to make sure it passes. '''
 
-import data_fetcher
 import requests_mock
-from data_fetcher import CountryFetcher
+from country_picker import CountryFetcher
 import requests
 
 def test_json():
