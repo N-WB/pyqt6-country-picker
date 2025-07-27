@@ -103,9 +103,7 @@ class CountryFetcher(QThread):
             return None
             
         if response.status_code is not requests.codes.ok:
-            print("A")
             print("Error: received network error", response.status_code)
-            print("B")
             return None
 
 
