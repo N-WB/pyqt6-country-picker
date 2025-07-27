@@ -7,11 +7,12 @@ def format_country_name(country_name: str) -> str:
     return "Selected: " + country_name
 
 class AppWindow(QtWidgets.QMainWindow):
-    """An application window containing a label and combobox"""
+    """An application window containing a label and combobox for picking countries"""
     
     central_widget: QtWidgets.QWidget
     selected_country_label: QtWidgets.QLabel
     country_picker: QtWidgets.QComboBox
+    countries_data: list[str]
 
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__(*args, **kwargs)
@@ -36,6 +37,3 @@ class AppWindow(QtWidgets.QMainWindow):
         self.country_picker.currentTextChanged.connect(slot)
         
         self.show()
-
-    def update_country_list(self, new_country_list: list[str]) -> None:
-        self.country_picker.addItems(new_country_list)

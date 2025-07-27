@@ -14,7 +14,6 @@ def validate_list_of_entries(
     for item in maybe_list:
         is_item_valid: bool = per_item_validator(item)
         if not is_item_valid:
-            print("bad item", item, "in list")
             return False
         
     return True
@@ -30,6 +29,6 @@ def do_full_country_list_validation(countries_list: Any) -> bool:
     # N.B. the types implied by the countries API documentation are ambiguous
     # In the API, only 165 countries have a "borders" attribute, despite the fact that "https://www.apicountries.com/docs/api/countries"
     # implies that the borders attribute is present on all types.
-    
+
     return validate_list_of_entries(countries_list, check_country_has_name)
 
