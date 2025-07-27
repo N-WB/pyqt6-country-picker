@@ -96,8 +96,12 @@ class CountryFetcher(QThread):
 
     def try_fetch_countries(self) -> list[str] | None:
         ''' Attempts to GET countries. Returns the list of countries, or None if any error is encountered.'''
-        
-        response = requests.get(self._url)
+        try:
+            response = requests.get(self._url)
+        except requests.RequestException as error:
+            print(error)
+            return None
+            
         if response.status_code is not requests.codes.ok:
             print("A")
             print("Error: received network error", response.status_code)
