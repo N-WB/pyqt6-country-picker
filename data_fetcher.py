@@ -2,7 +2,6 @@ import requests
 import typing
 from typing import Any, Callable
 import country_validation
-import threading
 from PyQt6.QtCore import QThread
 
 
