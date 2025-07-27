@@ -25,6 +25,7 @@ class CountryFetcher(QThread):
 
 
     def start_data_fetch_thread(self) -> None:
+        '''Start a thread that will attempt to obtain countries data until it succeeds.'''
         def pushCountryData():
             if self._country_names is not None:
                 self._slot(self._country_names)
@@ -40,7 +41,7 @@ class CountryFetcher(QThread):
             
             self._country_names = self.try_fetch_countries()
             if self._country_names is not None: break
-            
+
             self.msleep(ms_between_attempt_groups)
 
         self.quit()
