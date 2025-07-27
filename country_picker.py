@@ -16,6 +16,6 @@ if __name__ == "__main__":
     country_list: list[str] | None = data_fetcher.try_fetch_countries(countries_url)
 
     if country_list is not None:
-        pass
-
+        window.update_country_list(country_list)
+    
     application.exec()

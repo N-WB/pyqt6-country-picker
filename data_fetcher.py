@@ -17,9 +17,10 @@ def try_fetch_countries(url: str) -> list[str] | None:
             if is_valid:
 
                 def extract_name(country): return country["name"]
-                country_names = [extract_name, jsonAsPythonObject]
+                country_names = [extract_name(c) for c in jsonAsPythonObject]
+                print(country_names)
 
-                return jsonAsPythonObject
+                return country_names
             
             else:
                 print("Error: received json does not conform to the expected countries format. Retrying...")
